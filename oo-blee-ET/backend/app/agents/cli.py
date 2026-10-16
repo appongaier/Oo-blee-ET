@@ -9,7 +9,7 @@ import json
 import logging
 import sys
 
-from app.agents import AnthropicLLM, LLMError, Orchestrator
+from app.agents import LLMError, Orchestrator, get_llm
 from app.mcp_support import AuthorizationClaim, McpToolError
 
 DEFAULT_STATEMENTS = ["Ravi plays chess on weekends.", "Ravi is learning Portuguese.",
@@ -39,7 +39,7 @@ def main(argv: list[str] | None = None) -> int:
 
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     try:
-        llm = AnthropicLLM()
+        llm = get_llm()
     except LLMError as exc:
         print(f"Cannot start: {exc}")
         return 1

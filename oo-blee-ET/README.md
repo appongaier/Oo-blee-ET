@@ -64,12 +64,12 @@ and open http://localhost:5173 (Vite forwards `/api` to port 8000), or build it 
 npm run build
 ```
 
-and open http://localhost:8000. Frontend tests: `npm test`. The "Agents" tab needs `ANTHROPIC_API_KEY`; the rest
+and open http://localhost:8000. Frontend tests: `npm test`. The "Agents" tab needs `GEMINI_API_KEY` (or `ANTHROPIC_API_KEY`); the rest
 works without it. "Reset demo data" in the header reseeds the synthetic graphs.
 
 ## Try the agents
 
-Needs a real key. Put `ANTHROPIC_API_KEY` in `.env`, start FalkorDB, seed it, then from `backend`:
+Needs a real key. Put `GEMINI_API_KEY` in `.env`, start FalkorDB, seed it, then from `backend`:
 
 ```
 python -m app.agents.cli pipeline
@@ -77,8 +77,7 @@ python -m app.agents.cli ask auditor "Why does sum_team_q4 exist?"
 python -m app.agents.cli erase
 ```
 
-`erase` shows a preview and only deletes after you type the user id. Every tool call and handoff is written to `backend/logs/mcp.jsonl`; the MCP server itself is `mcp/server.py` (see `data/graph-model.md`). The tests use a scripted model, so
-the live Anthropic API has not been exercised yet; check `LLM_MODEL` exists on your account.
+`erase` shows a preview and only deletes after you type the user id. Every tool call and handoff is written to `backend/logs/mcp.jsonl`; the MCP server itself is `mcp/server.py` (see `data/graph-model.md`). Check `LLM_MODEL` (defaults to `gemini-2.5-flash`).
 
 ## Layout
 

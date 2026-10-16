@@ -34,7 +34,7 @@ class AnthropicLLM:
     def __init__(self, api_key: str | None = None, model: str | None = None,
                  max_tokens: int | None = None, client: Any = None):
         s = get_settings()
-        self.model = model or s.llm_model
+        self.model = model or (s.llm_model if s.resolved_provider == "anthropic" else None) or "claude-sonnet-5-5"
         self.max_tokens = max_tokens or s.llm_max_tokens
         if client is None:
             key = api_key or s.anthropic_api_key
@@ -57,3 +57,127 @@ class AnthropicLLM:
             elif b.type == "tool_use":
                 blocks.append({"type": "tool_use", "id": b.id, "name": b.name, "input": dict(b.input)})
         return LLMResponse(blocks=blocks, stop_reason=resp.stop_reason or "end_turn")
+
+
+class GeminiLLM:
+    def __init__(self, api_key: str | None = None, model: str | None = None,
+                 max_tokens: int | None = None, client: Any = None):
+        s = get_settings()
+        self.model = model or (s.llm_model if s.resolved_provider == "gemini" else None) or "gemini-2.5-flash"
+        self.max_tokens = max_tokens or s.llm_max_tokens
+        if client is None:
+            key = api_key or s.gemini_api_key
+            if not key:
+                raise LLMError("GEMINI_API_KEY is not set; the agents need a real LLM to run")
+            from google import genai
+            client = genai.Client(api_key=key)
+        self.client = client
+
+    def create(self, *, system: str, messages: list[dict], tools: list[dict]) -> LLMResponse:
+        import json
+        import uuid
+        from google.genai import types
+
+        # Build tools
+        func_decls = []
+        for t in tools:
+            params = t.get("parameters") or t.get("input_schema") or {}
+            func_decls.append(types.FunctionDeclaration(
+                name=t["name"],
+                description=t.get("description", ""),
+                parameters=params,
+            ))
+        genai_tools = [types.Tool(function_declarations=func_decls)] if func_decls else None
+
+        # Build contents from messages
+        id_to_name: dict[str, str] = {}
+        contents: list[types.Content] = []
+
+        for m in messages:
+            role = m["role"]
+            content = m["content"]
+            parts: list[types.Part] = []
+
+            if isinstance(content, str):
+                if content.strip():
+                    parts.append(types.Part.from_text(text=content))
+            elif isinstance(content, list):
+                for item in content:
+                    if isinstance(item, str):
+                        if item.strip():
+                            parts.append(types.Part.from_text(text=item))
+                    elif isinstance(item, dict):
+                        itype = item.get("type")
+                        if itype == "text":
+                            txt = item.get("text", "")
+                            if txt.strip():
+                                parts.append(types.Part.from_text(text=txt))
+                        elif itype == "tool_use":
+                            call_id = item.get("id")
+                            call_name = item.get("name", "")
+                            if call_id and call_name:
+                                id_to_name[call_id] = call_name
+                            parts.append(types.Part.from_function_call(name=call_name, args=dict(item.get("input") or {})))
+                        elif itype == "tool_result":
+                            call_id = item.get("tool_use_id", "")
+                            tool_name = id_to_name.get(call_id, "tool_result")
+                            raw = item.get("content", "")
+                            if isinstance(raw, str):
+                                try:
+                                    parsed = json.loads(raw)
+                                    res_dict = parsed if isinstance(parsed, dict) else {"result": parsed}
+                                except Exception:
+                                    res_dict = {"result": raw}
+                            elif isinstance(raw, dict):
+                                res_dict = raw
+                            else:
+                                res_dict = {"result": raw}
+                            parts.append(types.Part.from_function_response(name=tool_name, response=res_dict))
+
+            if parts:
+                genai_role = "model" if role == "assistant" else "user"
+                contents.append(types.Content(role=genai_role, parts=parts))
+
+        config = types.GenerateContentConfig(
+            system_instruction=system if system else None,
+            tools=genai_tools,
+            max_output_tokens=self.max_tokens,
+            temperature=0.0,
+        )
+
+        try:
+            resp = self.client.models.generate_content(
+                model=self.model,
+                contents=contents,
+                config=config,
+            )
+        except Exception as exc:
+            raise LLMError(f"{type(exc).__name__}: {str(exc)[:200]}") from exc
+
+        blocks = []
+        has_tool_call = False
+        if resp.candidates:
+            cand = resp.candidates[0]
+            if cand.content and cand.content.parts:
+                for part in cand.content.parts:
+                    if getattr(part, "text", None):
+                        blocks.append({"type": "text", "text": part.text})
+                    if getattr(part, "function_call", None):
+                        fc = part.function_call
+                        has_tool_call = True
+                        call_id = getattr(fc, "id", None) or f"call_{uuid.uuid4().hex[:8]}"
+                        blocks.append({"type": "tool_use", "id": call_id, "name": fc.name, "input": dict(fc.args or {})})
+
+        stop_reason = "tool_use" if has_tool_call else "end_turn"
+        return LLMResponse(blocks=blocks, stop_reason=stop_reason)
+
+
+def get_llm() -> LLM:
+    s = get_settings()
+    provider = s.resolved_provider
+    if provider == "gemini":
+        return GeminiLLM()
+    if provider == "anthropic":
+        return AnthropicLLM()
+    raise LLMError("Neither GEMINI_API_KEY nor ANTHROPIC_API_KEY is configured in .env")
+

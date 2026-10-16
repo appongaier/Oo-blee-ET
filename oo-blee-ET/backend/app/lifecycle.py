@@ -10,7 +10,7 @@ import uuid
 from collections import OrderedDict
 from typing import Callable
 
-from app.agents.llm import AnthropicLLM, LLMError
+from app.agents.llm import LLMError, get_llm
 from app.agents.mcp_client import McpToolClient, ServerBinding
 from app.config import get_settings
 from app.db import get_client
@@ -80,13 +80,14 @@ class Runtime:
 
     # ---------- LLM (optional) ----------
     def llm_available(self) -> bool:
-        return self._llm_factory is not None or bool(get_settings().anthropic_api_key)
+        s = get_settings()
+        return self._llm_factory is not None or bool(s.gemini_api_key) or bool(s.anthropic_api_key)
 
     def make_llm(self):
         if self._llm_factory is not None:
             return self._llm_factory()
         try:
-            return AnthropicLLM()
+            return get_llm()
         except LLMError as exc:
             raise McpToolError("LLM_NOT_CONFIGURED", str(exc)) from exc
 

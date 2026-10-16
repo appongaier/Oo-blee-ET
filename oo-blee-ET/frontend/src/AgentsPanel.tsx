@@ -33,7 +33,7 @@ export function AgentsPanel({ available, busy, error, asked, pipeline, onAsk, on
     return (
       <div className="panel-body">
         <p className="lede">The agents need a language model.</p>
-        <p>Set <code>ANTHROPIC_API_KEY</code> in <code>.env</code>, restart the API, and this tab will let you ask each agent a question or run the full Concierge, Analyst and Auditor pipeline.</p>
+        <p>Set <code>GEMINI_API_KEY</code> (or <code>ANTHROPIC_API_KEY</code>) in <code>.env</code>, restart the API, and this tab will let you ask each agent a question or run the full Concierge, Analyst and Auditor pipeline.</p>
         <p className="small">Everything else in this app works without a key.</p>
       </div>
     );
