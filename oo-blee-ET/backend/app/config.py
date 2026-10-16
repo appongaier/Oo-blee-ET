@@ -12,6 +12,7 @@ class Settings(BaseSettings):
 
     falkordb_host: str = "localhost"
     falkordb_port: int = 6379
+    falkordb_username: str | None = None
     falkordb_password: str | None = None
     api_cors_origins: str = "http://localhost:5173"
     gemini_api_key: str | None = None

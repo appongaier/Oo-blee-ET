@@ -9,8 +9,9 @@ def get_client() -> FalkorDB:
     return FalkorDB(
         host=s.falkordb_host,
         port=s.falkordb_port,
+        username=s.falkordb_username or None,
         password=s.falkordb_password or None,
-        socket_connect_timeout=2,
+        socket_connect_timeout=5,
     )
 
 

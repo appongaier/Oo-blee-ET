@@ -1,4 +1,3 @@
-/// <reference types="vitest/config" />
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -13,5 +12,6 @@ export default defineConfig({
       "/health": "http://localhost:8000",
     },
   },
+  // @ts-expect-error vitest config field
   test: { environment: "jsdom", include: ["src/**/*.test.ts", "src/**/*.test.tsx"] },
 });
