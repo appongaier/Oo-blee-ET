@@ -1,0 +1,21 @@
+# One FalkorDB server; tenants are separate graphs inside it (tenant_acme, tenant_globex).
+# Ports are bound to localhost only so the database is not exposed on your network.
+services:
+  falkordb:
+    # TODO(before final demo): pin to a tested tag instead of :latest.
+    image: falkordb/falkordb:latest
+    container_name: forgetting-falkordb
+    ports:
+      - "127.0.0.1:${FALKORDB_PORT:-6379}:6379"          # database
+      - "127.0.0.1:${FALKORDB_BROWSER_PORT:-3000}:3000"  # FalkorDB Browser (optional UI)
+    volumes:
+      - falkordb_data:/var/lib/falkordb/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  falkordb_data:

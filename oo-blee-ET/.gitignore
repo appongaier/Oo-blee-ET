@@ -1,0 +1,29 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Deletion receipts
+receipts/
+backend/receipts/
+
+# MCP audit logs
+logs/
+backend/logs/

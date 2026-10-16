@@ -1,0 +1,682 @@
+{
+ "counts": {
+  "edges": {
+   "ABOUT": 9,
+   "BASED_ON": 3,
+   "CONTAINS": 19,
+   "DERIVED_FROM": 9,
+   "INFERRED_FROM": 4,
+   "LEAKED_INTO": 1,
+   "SUMMARIZES": 8,
+   "SUPERSEDED_BY": 1,
+   "WROTE": 6
+  },
+  "nodes": {
+   "Action": 3,
+   "Agent": 3,
+   "Fact": 9,
+   "Inference": 3,
+   "Memory": 6,
+   "Source": 3,
+   "Summary": 4,
+   "Tenant": 2,
+   "User": 2
+  }
+ },
+ "edges": [
+  {
+   "dst": "inf_priya_email",
+   "id": "act_priya_send_update|BASED_ON|inf_priya_email",
+   "rel": "BASED_ON",
+   "src": "act_priya_send_update"
+  },
+  {
+   "dst": "inf_ravi_lisbon_veg",
+   "id": "act_ravi_suggest_restaurants|BASED_ON|inf_ravi_lisbon_veg",
+   "rel": "BASED_ON",
+   "src": "act_ravi_suggest_restaurants"
+  },
+  {
+   "dst": "inf_ravi_traveler",
+   "id": "act_ravi_travel_newsletter|BASED_ON|inf_ravi_traveler",
+   "rel": "BASED_ON",
+   "src": "act_ravi_travel_newsletter"
+  },
+  {
+   "dst": "mem_analyst_actions",
+   "id": "agent_analyst|WROTE|mem_analyst_actions",
+   "rel": "WROTE",
+   "src": "agent_analyst"
+  },
+  {
+   "dst": "mem_analyst_ravi_proc",
+   "id": "agent_analyst|WROTE|mem_analyst_ravi_proc",
+   "rel": "WROTE",
+   "src": "agent_analyst"
+  },
+  {
+   "dst": "mem_analyst_semantic",
+   "id": "agent_analyst|WROTE|mem_analyst_semantic",
+   "rel": "WROTE",
+   "src": "agent_analyst"
+  },
+  {
+   "dst": "mem_concierge_priya",
+   "id": "agent_concierge|WROTE|mem_concierge_priya",
+   "rel": "WROTE",
+   "src": "agent_concierge"
+  },
+  {
+   "dst": "mem_concierge_ravi",
+   "id": "agent_concierge|WROTE|mem_concierge_ravi",
+   "rel": "WROTE",
+   "src": "agent_concierge"
+  },
+  {
+   "dst": "mem_concierge_team",
+   "id": "agent_concierge|WROTE|mem_concierge_team",
+   "rel": "WROTE",
+   "src": "agent_concierge"
+  },
+  {
+   "dst": "user_priya",
+   "id": "fact_priya_email_pref|ABOUT|user_priya",
+   "rel": "ABOUT",
+   "src": "fact_priya_email_pref"
+  },
+  {
+   "dst": "src_chat_priya_001",
+   "id": "fact_priya_email_pref|DERIVED_FROM|src_chat_priya_001",
+   "rel": "DERIVED_FROM",
+   "src": "fact_priya_email_pref"
+  },
+  {
+   "dst": "user_priya",
+   "id": "fact_priya_owns_budget|ABOUT|user_priya",
+   "rel": "ABOUT",
+   "src": "fact_priya_owns_budget"
+  },
+  {
+   "dst": "src_meeting_team_001",
+   "id": "fact_priya_owns_budget|DERIVED_FROM|src_meeting_team_001",
+   "rel": "DERIVED_FROM",
+   "src": "fact_priya_owns_budget"
+  },
+  {
+   "dst": "user_priya",
+   "id": "fact_priya_role_finance|ABOUT|user_priya",
+   "rel": "ABOUT",
+   "src": "fact_priya_role_finance"
+  },
+  {
+   "dst": "src_chat_priya_001",
+   "id": "fact_priya_role_finance|DERIVED_FROM|src_chat_priya_001",
+   "rel": "DERIVED_FROM",
+   "src": "fact_priya_role_finance"
+  },
+  {
+   "dst": "user_ravi",
+   "id": "fact_ravi_city_bengaluru|ABOUT|user_ravi",
+   "rel": "ABOUT",
+   "src": "fact_ravi_city_bengaluru"
+  },
+  {
+   "dst": "src_chat_ravi_001",
+   "id": "fact_ravi_city_bengaluru|DERIVED_FROM|src_chat_ravi_001",
+   "rel": "DERIVED_FROM",
+   "src": "fact_ravi_city_bengaluru"
+  },
+  {
+   "dst": "user_ravi",
+   "id": "fact_ravi_city_pune|ABOUT|user_ravi",
+   "rel": "ABOUT",
+   "src": "fact_ravi_city_pune"
+  },
+  {
+   "dst": "src_chat_ravi_001",
+   "id": "fact_ravi_city_pune|DERIVED_FROM|src_chat_ravi_001",
+   "rel": "DERIVED_FROM",
+   "src": "fact_ravi_city_pune"
+  },
+  {
+   "dst": "fact_ravi_city_bengaluru",
+   "id": "fact_ravi_city_pune|SUPERSEDED_BY|fact_ravi_city_bengaluru",
+   "rel": "SUPERSEDED_BY",
+   "src": "fact_ravi_city_pune"
+  },
+  {
+   "dst": "user_ravi",
+   "id": "fact_ravi_digest_friday|ABOUT|user_ravi",
+   "rel": "ABOUT",
+   "src": "fact_ravi_digest_friday"
+  },
+  {
+   "dst": "src_chat_ravi_001",
+   "id": "fact_ravi_digest_friday|DERIVED_FROM|src_chat_ravi_001",
+   "rel": "DERIVED_FROM",
+   "src": "fact_ravi_digest_friday"
+  },
+  {
+   "dst": "user_ravi",
+   "id": "fact_ravi_owns_onboarding|ABOUT|user_ravi",
+   "rel": "ABOUT",
+   "src": "fact_ravi_owns_onboarding"
+  },
+  {
+   "dst": "src_meeting_team_001",
+   "id": "fact_ravi_owns_onboarding|DERIVED_FROM|src_meeting_team_001",
+   "rel": "DERIVED_FROM",
+   "src": "fact_ravi_owns_onboarding"
+  },
+  {
+   "dst": "user_ravi",
+   "id": "fact_ravi_trip_lisbon|ABOUT|user_ravi",
+   "rel": "ABOUT",
+   "src": "fact_ravi_trip_lisbon"
+  },
+  {
+   "dst": "src_chat_ravi_001",
+   "id": "fact_ravi_trip_lisbon|DERIVED_FROM|src_chat_ravi_001",
+   "rel": "DERIVED_FROM",
+   "src": "fact_ravi_trip_lisbon"
+  },
+  {
+   "dst": "globex",
+   "id": "fact_ravi_trip_lisbon|LEAKED_INTO|globex",
+   "rel": "LEAKED_INTO",
+   "src": "fact_ravi_trip_lisbon"
+  },
+  {
+   "dst": "user_ravi",
+   "id": "fact_ravi_vegetarian|ABOUT|user_ravi",
+   "rel": "ABOUT",
+   "src": "fact_ravi_vegetarian"
+  },
+  {
+   "dst": "src_chat_ravi_001",
+   "id": "fact_ravi_vegetarian|DERIVED_FROM|src_chat_ravi_001",
+   "rel": "DERIVED_FROM",
+   "src": "fact_ravi_vegetarian"
+  },
+  {
+   "dst": "fact_priya_email_pref",
+   "id": "inf_priya_email|INFERRED_FROM|fact_priya_email_pref",
+   "rel": "INFERRED_FROM",
+   "src": "inf_priya_email"
+  },
+  {
+   "dst": "fact_ravi_trip_lisbon",
+   "id": "inf_ravi_lisbon_veg|INFERRED_FROM|fact_ravi_trip_lisbon",
+   "rel": "INFERRED_FROM",
+   "src": "inf_ravi_lisbon_veg"
+  },
+  {
+   "dst": "fact_ravi_vegetarian",
+   "id": "inf_ravi_lisbon_veg|INFERRED_FROM|fact_ravi_vegetarian",
+   "rel": "INFERRED_FROM",
+   "src": "inf_ravi_lisbon_veg"
+  },
+  {
+   "dst": "sum_ravi_profile",
+   "id": "inf_ravi_traveler|INFERRED_FROM|sum_ravi_profile",
+   "rel": "INFERRED_FROM",
+   "src": "inf_ravi_traveler"
+  },
+  {
+   "dst": "act_priya_send_update",
+   "id": "mem_analyst_actions|CONTAINS|act_priya_send_update",
+   "rel": "CONTAINS",
+   "src": "mem_analyst_actions"
+  },
+  {
+   "dst": "act_ravi_suggest_restaurants",
+   "id": "mem_analyst_actions|CONTAINS|act_ravi_suggest_restaurants",
+   "rel": "CONTAINS",
+   "src": "mem_analyst_actions"
+  },
+  {
+   "dst": "act_ravi_travel_newsletter",
+   "id": "mem_analyst_actions|CONTAINS|act_ravi_travel_newsletter",
+   "rel": "CONTAINS",
+   "src": "mem_analyst_actions"
+  },
+  {
+   "dst": "fact_ravi_digest_friday",
+   "id": "mem_analyst_ravi_proc|CONTAINS|fact_ravi_digest_friday",
+   "rel": "CONTAINS",
+   "src": "mem_analyst_ravi_proc"
+  },
+  {
+   "dst": "inf_priya_email",
+   "id": "mem_analyst_semantic|CONTAINS|inf_priya_email",
+   "rel": "CONTAINS",
+   "src": "mem_analyst_semantic"
+  },
+  {
+   "dst": "inf_ravi_lisbon_veg",
+   "id": "mem_analyst_semantic|CONTAINS|inf_ravi_lisbon_veg",
+   "rel": "CONTAINS",
+   "src": "mem_analyst_semantic"
+  },
+  {
+   "dst": "inf_ravi_traveler",
+   "id": "mem_analyst_semantic|CONTAINS|inf_ravi_traveler",
+   "rel": "CONTAINS",
+   "src": "mem_analyst_semantic"
+  },
+  {
+   "dst": "sum_priya_profile",
+   "id": "mem_analyst_semantic|CONTAINS|sum_priya_profile",
+   "rel": "CONTAINS",
+   "src": "mem_analyst_semantic"
+  },
+  {
+   "dst": "sum_ravi_overview",
+   "id": "mem_analyst_semantic|CONTAINS|sum_ravi_overview",
+   "rel": "CONTAINS",
+   "src": "mem_analyst_semantic"
+  },
+  {
+   "dst": "sum_ravi_profile",
+   "id": "mem_analyst_semantic|CONTAINS|sum_ravi_profile",
+   "rel": "CONTAINS",
+   "src": "mem_analyst_semantic"
+  },
+  {
+   "dst": "sum_team_q4",
+   "id": "mem_analyst_semantic|CONTAINS|sum_team_q4",
+   "rel": "CONTAINS",
+   "src": "mem_analyst_semantic"
+  },
+  {
+   "dst": "fact_priya_email_pref",
+   "id": "mem_concierge_priya|CONTAINS|fact_priya_email_pref",
+   "rel": "CONTAINS",
+   "src": "mem_concierge_priya"
+  },
+  {
+   "dst": "fact_priya_role_finance",
+   "id": "mem_concierge_priya|CONTAINS|fact_priya_role_finance",
+   "rel": "CONTAINS",
+   "src": "mem_concierge_priya"
+  },
+  {
+   "dst": "fact_ravi_city_bengaluru",
+   "id": "mem_concierge_ravi|CONTAINS|fact_ravi_city_bengaluru",
+   "rel": "CONTAINS",
+   "src": "mem_concierge_ravi"
+  },
+  {
+   "dst": "fact_ravi_city_pune",
+   "id": "mem_concierge_ravi|CONTAINS|fact_ravi_city_pune",
+   "rel": "CONTAINS",
+   "src": "mem_concierge_ravi"
+  },
+  {
+   "dst": "fact_ravi_trip_lisbon",
+   "id": "mem_concierge_ravi|CONTAINS|fact_ravi_trip_lisbon",
+   "rel": "CONTAINS",
+   "src": "mem_concierge_ravi"
+  },
+  {
+   "dst": "fact_ravi_vegetarian",
+   "id": "mem_concierge_ravi|CONTAINS|fact_ravi_vegetarian",
+   "rel": "CONTAINS",
+   "src": "mem_concierge_ravi"
+  },
+  {
+   "dst": "fact_priya_owns_budget",
+   "id": "mem_concierge_team|CONTAINS|fact_priya_owns_budget",
+   "rel": "CONTAINS",
+   "src": "mem_concierge_team"
+  },
+  {
+   "dst": "fact_ravi_owns_onboarding",
+   "id": "mem_concierge_team|CONTAINS|fact_ravi_owns_onboarding",
+   "rel": "CONTAINS",
+   "src": "mem_concierge_team"
+  },
+  {
+   "dst": "fact_priya_email_pref",
+   "id": "sum_priya_profile|SUMMARIZES|fact_priya_email_pref",
+   "rel": "SUMMARIZES",
+   "src": "sum_priya_profile"
+  },
+  {
+   "dst": "fact_priya_role_finance",
+   "id": "sum_priya_profile|SUMMARIZES|fact_priya_role_finance",
+   "rel": "SUMMARIZES",
+   "src": "sum_priya_profile"
+  },
+  {
+   "dst": "sum_ravi_profile",
+   "id": "sum_ravi_overview|SUMMARIZES|sum_ravi_profile",
+   "rel": "SUMMARIZES",
+   "src": "sum_ravi_overview"
+  },
+  {
+   "dst": "fact_ravi_city_bengaluru",
+   "id": "sum_ravi_profile|SUMMARIZES|fact_ravi_city_bengaluru",
+   "rel": "SUMMARIZES",
+   "src": "sum_ravi_profile"
+  },
+  {
+   "dst": "fact_ravi_trip_lisbon",
+   "id": "sum_ravi_profile|SUMMARIZES|fact_ravi_trip_lisbon",
+   "rel": "SUMMARIZES",
+   "src": "sum_ravi_profile"
+  },
+  {
+   "dst": "fact_ravi_vegetarian",
+   "id": "sum_ravi_profile|SUMMARIZES|fact_ravi_vegetarian",
+   "rel": "SUMMARIZES",
+   "src": "sum_ravi_profile"
+  },
+  {
+   "dst": "fact_priya_owns_budget",
+   "id": "sum_team_q4|SUMMARIZES|fact_priya_owns_budget",
+   "rel": "SUMMARIZES",
+   "src": "sum_team_q4"
+  },
+  {
+   "dst": "fact_ravi_owns_onboarding",
+   "id": "sum_team_q4|SUMMARIZES|fact_ravi_owns_onboarding",
+   "rel": "SUMMARIZES",
+   "src": "sum_team_q4"
+  }
+ ],
+ "graph": "tenant_acme",
+ "nodes": [
+  {
+   "id": "acme",
+   "label": "Tenant",
+   "name": "Acme"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "created_at": "2026-10-01T09:52:00Z",
+   "id": "act_priya_send_update",
+   "label": "Action",
+   "status": "proposed",
+   "tenant_id": "acme",
+   "type": "send_email_update"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "created_at": "2026-10-01T09:50:00Z",
+   "id": "act_ravi_suggest_restaurants",
+   "label": "Action",
+   "status": "proposed",
+   "tenant_id": "acme",
+   "type": "suggest_restaurants"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "created_at": "2026-10-01T09:51:00Z",
+   "id": "act_ravi_travel_newsletter",
+   "label": "Action",
+   "status": "proposed",
+   "tenant_id": "acme",
+   "type": "send_travel_newsletter"
+  },
+  {
+   "id": "agent_analyst",
+   "label": "Agent",
+   "role": "analyst"
+  },
+  {
+   "id": "agent_auditor",
+   "label": "Agent",
+   "role": "auditor"
+  },
+  {
+   "id": "agent_concierge",
+   "label": "Agent",
+   "role": "concierge"
+  },
+  {
+   "agent_id": "agent_concierge",
+   "created_at": "2026-10-01T09:07:00Z",
+   "id": "fact_priya_email_pref",
+   "label": "Fact",
+   "sensitivity": "low",
+   "tenant_id": "acme",
+   "text": "Priya prefers email over phone calls.",
+   "tier": "episodic"
+  },
+  {
+   "agent_id": "agent_concierge",
+   "created_at": "2026-10-01T09:12:00Z",
+   "id": "fact_priya_owns_budget",
+   "label": "Fact",
+   "sensitivity": "low",
+   "tenant_id": "acme",
+   "text": "Priya owns the Q4 budget review.",
+   "tier": "episodic"
+  },
+  {
+   "agent_id": "agent_concierge",
+   "created_at": "2026-10-01T09:06:00Z",
+   "id": "fact_priya_role_finance",
+   "label": "Fact",
+   "sensitivity": "low",
+   "tenant_id": "acme",
+   "text": "Priya works on the finance team.",
+   "tier": "episodic"
+  },
+  {
+   "agent_id": "agent_concierge",
+   "created_at": "2026-10-01T09:02:00Z",
+   "id": "fact_ravi_city_bengaluru",
+   "label": "Fact",
+   "sensitivity": "low",
+   "tenant_id": "acme",
+   "text": "Ravi moved to Bengaluru.",
+   "tier": "episodic"
+  },
+  {
+   "agent_id": "agent_concierge",
+   "created_at": "2026-10-01T09:01:00Z",
+   "id": "fact_ravi_city_pune",
+   "label": "Fact",
+   "sensitivity": "low",
+   "tenant_id": "acme",
+   "text": "Ravi lives in Pune.",
+   "tier": "episodic"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "created_at": "2026-10-01T09:20:00Z",
+   "id": "fact_ravi_digest_friday",
+   "label": "Fact",
+   "sensitivity": "low",
+   "tenant_id": "acme",
+   "text": "Send Ravi the weekly digest on Fridays at 9 am.",
+   "tier": "procedural"
+  },
+  {
+   "agent_id": "agent_concierge",
+   "created_at": "2026-10-01T09:11:00Z",
+   "id": "fact_ravi_owns_onboarding",
+   "label": "Fact",
+   "sensitivity": "low",
+   "tenant_id": "acme",
+   "text": "Ravi owns the Q4 onboarding checklist.",
+   "tier": "episodic"
+  },
+  {
+   "agent_id": "agent_concierge",
+   "created_at": "2026-10-01T09:03:00Z",
+   "id": "fact_ravi_trip_lisbon",
+   "label": "Fact",
+   "sensitivity": "medium",
+   "tenant_id": "acme",
+   "text": "Ravi is planning a trip to Lisbon in March.",
+   "tier": "episodic"
+  },
+  {
+   "agent_id": "agent_concierge",
+   "created_at": "2026-10-01T09:04:00Z",
+   "id": "fact_ravi_vegetarian",
+   "label": "Fact",
+   "sensitivity": "medium",
+   "tenant_id": "acme",
+   "text": "Ravi eats vegetarian food.",
+   "tier": "episodic"
+  },
+  {
+   "id": "globex",
+   "label": "Tenant",
+   "name": "Globex"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "confidence": 0.9,
+   "created_at": "2026-10-01T09:42:00Z",
+   "id": "inf_priya_email",
+   "label": "Inference",
+   "tenant_id": "acme",
+   "text": "Priya should receive updates by email.",
+   "tier": "semantic"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "confidence": 0.82,
+   "created_at": "2026-10-01T09:40:00Z",
+   "id": "inf_ravi_lisbon_veg",
+   "label": "Inference",
+   "tenant_id": "acme",
+   "text": "Ravi will want vegetarian restaurant suggestions in Lisbon.",
+   "tier": "semantic"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "confidence": 0.6,
+   "created_at": "2026-10-01T09:41:00Z",
+   "id": "inf_ravi_traveler",
+   "label": "Inference",
+   "tenant_id": "acme",
+   "text": "Ravi travels often.",
+   "tier": "semantic"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "id": "mem_analyst_actions",
+   "label": "Memory",
+   "session_id": "sess_analyst_001",
+   "tenant_id": "acme",
+   "tier": "procedural"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "id": "mem_analyst_ravi_proc",
+   "label": "Memory",
+   "session_id": "sess_analyst_001",
+   "tenant_id": "acme",
+   "tier": "procedural"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "id": "mem_analyst_semantic",
+   "label": "Memory",
+   "session_id": "sess_analyst_001",
+   "tenant_id": "acme",
+   "tier": "semantic"
+  },
+  {
+   "agent_id": "agent_concierge",
+   "id": "mem_concierge_priya",
+   "label": "Memory",
+   "session_id": "sess_priya_001",
+   "tenant_id": "acme",
+   "tier": "episodic"
+  },
+  {
+   "agent_id": "agent_concierge",
+   "id": "mem_concierge_ravi",
+   "label": "Memory",
+   "session_id": "sess_ravi_001",
+   "tenant_id": "acme",
+   "tier": "episodic"
+  },
+  {
+   "agent_id": "agent_concierge",
+   "id": "mem_concierge_team",
+   "label": "Memory",
+   "session_id": "sess_team_001",
+   "tenant_id": "acme",
+   "tier": "episodic"
+  },
+  {
+   "created_at": "2026-10-01T09:05:00Z",
+   "id": "src_chat_priya_001",
+   "label": "Source",
+   "type": "chat_session",
+   "url_or_session": "session:sess_priya_001"
+  },
+  {
+   "created_at": "2026-10-01T09:00:00Z",
+   "id": "src_chat_ravi_001",
+   "label": "Source",
+   "type": "chat_session",
+   "url_or_session": "session:sess_ravi_001"
+  },
+  {
+   "created_at": "2026-10-01T09:10:00Z",
+   "id": "src_meeting_team_001",
+   "label": "Source",
+   "type": "meeting_transcript",
+   "url_or_session": "session:sess_team_001"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "created_at": "2026-10-01T09:32:00Z",
+   "id": "sum_priya_profile",
+   "label": "Summary",
+   "tenant_id": "acme",
+   "text": "Priya is on the finance team and prefers email.",
+   "tier": "semantic"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "created_at": "2026-10-01T09:31:00Z",
+   "id": "sum_ravi_overview",
+   "label": "Summary",
+   "tenant_id": "acme",
+   "text": "Ravi is a Bengaluru-based vegetarian who travels.",
+   "tier": "semantic"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "created_at": "2026-10-01T09:30:00Z",
+   "id": "sum_ravi_profile",
+   "label": "Summary",
+   "tenant_id": "acme",
+   "text": "Ravi is based in Bengaluru, is planning a Lisbon trip, and eats vegetarian food.",
+   "tier": "semantic"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "created_at": "2026-10-01T09:33:00Z",
+   "id": "sum_team_q4",
+   "label": "Summary",
+   "tenant_id": "acme",
+   "text": "Q4 planning: Ravi owns onboarding, Priya owns the budget review.",
+   "tier": "semantic"
+  },
+  {
+   "display_name": "Priya",
+   "id": "user_priya",
+   "label": "User",
+   "tenant_id": "acme"
+  },
+  {
+   "display_name": "Ravi",
+   "id": "user_ravi",
+   "label": "User",
+   "tenant_id": "acme"
+  }
+ ],
+ "tenant": "acme",
+ "version": "9b9058c6d3c1f1a8"
+}

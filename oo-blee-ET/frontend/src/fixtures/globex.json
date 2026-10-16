@@ -1,0 +1,76 @@
+{
+ "counts": {
+  "edges": {
+   "CONTAINS": 1,
+   "DERIVED_FROM": 1,
+   "WROTE": 1
+  },
+  "nodes": {
+   "Agent": 1,
+   "Fact": 1,
+   "Memory": 1,
+   "Source": 1,
+   "Tenant": 1
+  }
+ },
+ "edges": [
+  {
+   "dst": "mem_globex_analyst_copy",
+   "id": "agent_analyst|WROTE|mem_globex_analyst_copy",
+   "rel": "WROTE",
+   "src": "agent_analyst"
+  },
+  {
+   "dst": "src_xtenant_copy_lisbon",
+   "id": "fact_globex_copy_lisbon|DERIVED_FROM|src_xtenant_copy_lisbon",
+   "rel": "DERIVED_FROM",
+   "src": "fact_globex_copy_lisbon"
+  },
+  {
+   "dst": "fact_globex_copy_lisbon",
+   "id": "mem_globex_analyst_copy|CONTAINS|fact_globex_copy_lisbon",
+   "rel": "CONTAINS",
+   "src": "mem_globex_analyst_copy"
+  }
+ ],
+ "graph": "tenant_globex",
+ "nodes": [
+  {
+   "id": "agent_analyst",
+   "label": "Agent",
+   "role": "analyst"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "created_at": "2026-10-01T10:01:00Z",
+   "id": "fact_globex_copy_lisbon",
+   "label": "Fact",
+   "sensitivity": "medium",
+   "tenant_id": "globex",
+   "text": "Ravi is planning a trip to Lisbon in March.",
+   "tier": "episodic"
+  },
+  {
+   "id": "globex",
+   "label": "Tenant",
+   "name": "Globex"
+  },
+  {
+   "agent_id": "agent_analyst",
+   "id": "mem_globex_analyst_copy",
+   "label": "Memory",
+   "session_id": "sess_analyst_002",
+   "tenant_id": "globex",
+   "tier": "episodic"
+  },
+  {
+   "created_at": "2026-10-01T10:00:00Z",
+   "id": "src_xtenant_copy_lisbon",
+   "label": "Source",
+   "type": "cross_tenant_copy",
+   "url_or_session": "tenant_acme:fact_ravi_trip_lisbon"
+  }
+ ],
+ "tenant": "globex",
+ "version": "83818ecdcf8a837c"
+}
