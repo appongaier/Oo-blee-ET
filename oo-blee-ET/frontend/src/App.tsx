@@ -212,7 +212,7 @@ export default function App() {
     <div className="app">
       <p className="banner" role="note">{config?.disclaimer ?? FALLBACK_DISCLAIMER}</p>
       <header className="top">
-        <h1>The Forgetting Agent</h1>
+        <h1>Oo-blee-ET</h1>
         <div className="tenants" role="tablist" aria-label="Tenant">
           {(config?.tenants ?? [{ id: "acme" }, { id: "globex" }]).map((t) => (
             <button key={t.id} role="tab" type="button" aria-selected={viewTenant === t.id} onClick={() => chooseTenant(t.id)}>{t.id}</button>

@@ -21,7 +21,7 @@ async def lifespan(_app: FastAPI):
     shutdown_runtime()                     # stop the MCP server processes
 
 
-app = FastAPI(title="The Forgetting Agent", version="0.5.0", lifespan=lifespan)
+app = FastAPI(title="Oo-blee-ET", version="0.5.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
